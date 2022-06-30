@@ -29,9 +29,12 @@ public class BooksController : Controller
       _context = context;
     }
 
+<<<<<<< HEAD
     // [HttpGet("/Books/Dashboard")]
     // public IActionResult Dashboard()
     // {
       
     // }
+=======
+>>>>>>> 0d7966c778bb1bceb1e75e319177a22e6e7fc7e9
 }
