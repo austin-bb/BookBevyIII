@@ -6,13 +6,30 @@ namespace BookBevyIII.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private BookBevyContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    private int? uid 
     {
-        _logger = logger;
+      get
+      {
+        return HttpContext.Session.GetInt32("UserId");
+      }
     }
 
+    private bool loggedIn
+    {
+      get
+      {
+        return uid != null;
+      }
+    }
+
+    public HomeController(BookBevyContext context)
+    {
+      _context = context;
+    }
+
+    [HttpGet("")]
     public IActionResult Index()
     {
         return View();
