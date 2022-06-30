@@ -1,6 +1,6 @@
 @model LoginUser
 
-
+<h4>Log-in to Bookbevy</h4>
 <form asp-controller="Users" asp-action="Register" method="POST">
 
   <div class="mb-4">
@@ -13,5 +13,6 @@
     <span asp-validation-for="LoginPassword"></span>
     <input asp-for="LoginPassword">
   </div>
+  <button>Get in the Drink</button>
 
 </form>

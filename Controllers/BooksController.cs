@@ -29,5 +29,4 @@ public class BooksController : Controller
       _context = context;
     }
 
-    
 }
