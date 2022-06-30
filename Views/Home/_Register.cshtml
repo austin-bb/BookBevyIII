@@ -1,5 +1,6 @@
 @model User
 
+<h4>Register for BookBevy</h4>
 <form asp-controller="Users" asp-action="Register" method="POST">
   <div class="mb-4">
     <label asp-for="FName"></label>
@@ -26,4 +27,5 @@
     <span asp-validation-for="ConfirmPassword"></span>
     <input asp-for="ConfirmPassword">
   </div>
+  <button>Join the Drink</button>
 </form>

@@ -32,6 +32,6 @@ public class UsersController : Controller
   [HttpPost("users/register")]
   public IActionResult Register(User newUser)
   {
-    return View("Index", "Home");
+    return View("Book", "Home");
   }
 }
