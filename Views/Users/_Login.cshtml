@@ -1,17 +1,18 @@
 @model LoginUser
 
-<h4>Log-in to Bookbevy</h4>
-<form asp-controller="Users" asp-action="Register" method="POST">
-  <div class="mb-4">
-    <label asp-for="LoginUsername"></label>
-    <span asp-validation-for="LoginUsername"></span>
-    <input asp-for="LoginUsername">
-  </div>
-  <div class="mb-4">
-    <label asp-for="LoginPassword"></label>
-    <span asp-validation-for="LoginPassword"></span>
-    <input asp-for="LoginPassword">
-  </div>
-  <button>Get in the Drink</button>
-
-</form>
+<div class="flex-1">
+  <h4>Log-in to Bookbevy</h4>
+  <form asp-controller="Users" asp-action="Register" method="POST">
+    <div class="mb-4">
+      <label asp-for="LoginUsername"></label>
+      <span asp-validation-for="LoginUsername"></span>
+      <input asp-for="LoginUsername">
+    </div>
+    <div class="mb-4">
+      <label asp-for="LoginPassword"></label>
+      <span asp-validation-for="LoginPassword"></span>
+      <input asp-for="LoginPassword">
+    </div>
+    <button>Get in the Drink</button>
+  </form>
+</div>
