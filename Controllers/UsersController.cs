@@ -29,10 +29,16 @@ public class UsersController : Controller
   {
     _context = context;
   }
-  [HttpGet("/")]
-  public IActionResult LoginAndRegister()
+
+  [HttpGet("")]
+  public IActionResult Index()
   {
-    return View("_Register");
+    if (loggedIn)
+    {
+      return RedirectToAction("Dashboard", "Books");
+    }
+
+    return View();
   }
 
   [HttpPost("users/register")]
@@ -40,17 +46,17 @@ public class UsersController : Controller
   {
     if (ModelState.IsValid == false)
     {
-      return LoginAndRegister();
+      return RedirectToAction("Index");
     }
     if (_context.Users.Any(User => User.Email == newUser.Email))
     {
       ModelState.AddModelError("Email", "is already in use");
-      return LoginAndRegister();
+      return RedirectToAction("Index");
     }
         if (_context.Users.Any(User => User.Username == newUser.Username))
     {
       ModelState.AddModelError("Username", "is already in use");
-      return LoginAndRegister();
+      return RedirectToAction("Index");
     }
     PasswordHasher<User> hashedPW = new PasswordHasher<User>();
     newUser.Password = hashedPW.HashPassword(newUser, newUser.Password);
@@ -59,7 +65,7 @@ public class UsersController : Controller
     _context.SaveChanges();
 
     HttpContext.Session.SetInt32("UserId", newUser.UserId);
-    return View("Book", "Home");
+    return View("Dashboard", "Books");
     
   }
   
