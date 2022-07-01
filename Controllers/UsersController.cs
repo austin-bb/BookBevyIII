@@ -53,20 +53,26 @@ public class UsersController : Controller
       ModelState.AddModelError("Email", "is already in use");
       return RedirectToAction("Index");
     }
-        if (_context.Users.Any(User => User.Username == newUser.Username))
+    if (_context.Users.Any(User => User.Username == newUser.Username))
     {
       ModelState.AddModelError("Username", "is already in use");
       return RedirectToAction("Index");
     }
     PasswordHasher<User> hashedPW = new PasswordHasher<User>();
     newUser.Password = hashedPW.HashPassword(newUser, newUser.Password);
-    
+
     _context.Users.Add(newUser);
     _context.SaveChanges();
 
     HttpContext.Session.SetInt32("UserId", newUser.UserId);
     return View("Dashboard", "Books");
-    
+
   }
-  
+
+  [HttpGet("/dashboard")]
+  public IActionResult Dashboard()
+  {
+    return View("Dashboard");
+  }
+
 }
