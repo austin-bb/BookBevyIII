@@ -6,28 +6,33 @@ namespace BookBevyIII.Controllers;
 
 public class BooksController : Controller
 {
-    private BookBevyContext _context;
+  private BookBevyContext _context;
 
-    private int? uid 
+  private int? uid
+  {
+    get
     {
-      get
-      {
-        return HttpContext.Session.GetInt32("UserId");
-      }
+      return HttpContext.Session.GetInt32("UserId");
     }
+  }
 
-    private bool loggedIn
+  private bool loggedIn
+  {
+    get
     {
-      get
-      {
-        return uid != null;
-      }
+      return uid != null;
     }
+  }
 
-    public BooksController(BookBevyContext context)
-    {
-      _context = context;
-    }
+  public BooksController(BookBevyContext context)
+  {
+    _context = context;
+  }
 
+  [HttpGet("/books/categories")]
 
+  public IActionResult BookCategories()
+  {
+    return View("ShowCategories");
+  }
 }
