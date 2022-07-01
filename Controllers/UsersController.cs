@@ -35,7 +35,7 @@ public class UsersController : Controller
   {
     if (loggedIn)
     {
-      return RedirectToAction("Dashboard", "Books");
+      return Dashboard();
     }
 
     return View();
